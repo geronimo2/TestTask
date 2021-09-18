@@ -10,6 +10,8 @@ namespace Volue.Application.Common.Interfaces
         DbSet<TodoList> TodoLists { get; set; }
 
         DbSet<TodoItem> TodoItems { get; set; }
+        
+        DbSet<DataPoint> DataPoints { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

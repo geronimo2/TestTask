@@ -1,4 +1,5 @@
-﻿using Volue.Domain.Entities;
+﻿using System.Collections.Generic;
+using Volue.Domain.Entities;
 using Volue.Domain.ValueObjects;
 using Volue.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -30,23 +31,15 @@ namespace Volue.Infrastructure.Persistence
         public static async Task SeedSampleDataAsync(ApplicationDbContext context)
         {
             // Seed, if necessary
-            if (!context.TodoLists.Any())
+            if (!context.DataPoints.Any())
             {
-                context.TodoLists.Add(new TodoList
+                context.DataPoints.AddRange(new List<DataPoint>
                 {
-                    Title = "Shopping",
-                    Colour = Colour.Blue,
-                    Items =
-                    {
-                        new TodoItem { Title = "Apples", Done = true },
-                        new TodoItem { Title = "Milk", Done = true },
-                        new TodoItem { Title = "Bread", Done = true },
-                        new TodoItem { Title = "Toilet paper" },
-                        new TodoItem { Title = "Pasta" },
-                        new TodoItem { Title = "Tissues" },
-                        new TodoItem { Title = "Tuna" },
-                        new TodoItem { Title = "Water" }
-                    }
+                    new DataPoint() { Name = "example1", TimeStamp = 13515551, Value = 1.1f },
+                    new DataPoint() { Name = "example1", TimeStamp = 13515552, Value = 2.4f },
+                    new DataPoint() { Name = "example1", TimeStamp = 13515553, Value = 3.5f },
+                    new DataPoint() { Name = "example2", TimeStamp = 13515554, Value = 1.5f },
+                    new DataPoint() { Name = "example2", TimeStamp = 13515555, Value = 2.5f },
                 });
 
                 await context.SaveChangesAsync();
