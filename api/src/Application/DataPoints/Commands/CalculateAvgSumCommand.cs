@@ -52,7 +52,7 @@ namespace Volue.Application.DataPoints.Commands
         
         public async Task<AvgSumDto> Handle(CalculateAvgSumCommand request, CancellationToken cancellationToken)
         {
-            var batchSize = 2;
+            var batchSize = 100;
             var query = GetQuery(
                 request.Name,
                 request.From.Value,

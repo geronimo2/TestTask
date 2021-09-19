@@ -8,5 +8,6 @@
 - calculation pythone, pandas, better handle time series
 - time series specific database
 - docker compose, run, build scrips (need more time, i'm familiar with azure CI/CD piplines)
+- change float to decimal 
 
 need more time :):
