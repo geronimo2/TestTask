@@ -1,3 +1,13 @@
+# application run
+
+- api
+	- navigate to api/src/WebUI
+	- dotnet run WebUI.csproj
+
+- calculation
+	- navigate to calculator/
+	- node ./app.js 
+
 # todo
 
 - input validation, api service. infrastracture is ready
@@ -11,3 +21,5 @@
 - change float to decimal 
 
 need more time :):
+
+
