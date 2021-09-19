@@ -1,5 +1,4 @@
 ﻿using Volue.Application.Common.Interfaces;
-using Volue.Infrastructure.Files;
 using Volue.Infrastructure.Identity;
 using Volue.Infrastructure.Persistence;
 using Volue.Infrastructure.Services;
@@ -42,7 +41,7 @@ namespace Volue.Infrastructure
 
             services.AddTransient<IDateTime, DateTimeService>();
             services.AddTransient<IIdentityService, IdentityService>();
-            services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
+            services.AddTransient<ICalculatorService, CalculatorService>();
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();

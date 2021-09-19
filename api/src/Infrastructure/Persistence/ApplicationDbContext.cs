@@ -30,10 +30,6 @@ namespace Volue.Infrastructure.Persistence
             _domainEventService = domainEventService;
             _dateTime = dateTime;
         }
-
-        public DbSet<TodoItem> TodoItems { get; set; }
-
-        public DbSet<TodoList> TodoLists { get; set; }
         
         public DbSet<DataPoint> DataPoints { get; set; }
 

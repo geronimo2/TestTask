@@ -5,6 +5,8 @@ using Volue.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityModel.Jwk;
+using Volue.Application.DataPoints;
 
 namespace Volue.Infrastructure.Persistence
 {
@@ -30,20 +32,67 @@ namespace Volue.Infrastructure.Persistence
 
         public static async Task SeedSampleDataAsync(ApplicationDbContext context)
         {
+            var example1 = GenerateDataSeries("example1", 13515551, 1000, 1f, 0.1f);
+            var example2 = GenerateDataSeries("example2", 13515551, 1000, 1f, 0.1f);
+
             // Seed, if necessary
             if (!context.DataPoints.Any())
             {
+                context.DataPoints.AddRange(example1);
+                context.DataPoints.AddRange(example2);
                 context.DataPoints.AddRange(new List<DataPoint>
                 {
-                    new DataPoint() { Name = "example1", TimeStamp = 13515551, Value = 1.1f },
-                    new DataPoint() { Name = "example1", TimeStamp = 13515552, Value = 2.4f },
-                    new DataPoint() { Name = "example1", TimeStamp = 13515553, Value = 3.5f },
-                    new DataPoint() { Name = "example2", TimeStamp = 13515554, Value = 1.5f },
-                    new DataPoint() { Name = "example2", TimeStamp = 13515555, Value = 2.5f },
+                    new DataPoint
+                    {
+                        Name = "test",
+                        TimeStamp = 1,
+                        Value = 1f, 
+                    },
+                    new DataPoint
+                    {
+                        Name = "test",
+                        TimeStamp = 2,
+                        Value = 2f, 
+                    },
+                    new DataPoint
+                    {
+                        Name = "test",
+                        TimeStamp = 3,
+                        Value = 3f, 
+                    },
+                    new DataPoint
+                    {
+                        Name = "test",
+                        TimeStamp = 4,
+                        Value = 4f, 
+                    },
+                    new DataPoint
+                    {
+                        Name = "test",
+                        TimeStamp = 5,
+                        Value = 5f, 
+                    },
                 });
 
                 await context.SaveChangesAsync();
             }
         }
+        
+        private static List<DataPoint> GenerateDataSeries(
+            string name, 
+            int timeStampStart, 
+            int count, 
+            float valueInit, 
+            float valueStep) => 
+                Enumerable.Range(timeStampStart, count).Select(ts =>
+                {
+                    valueInit = ts == timeStampStart ? valueInit : valueInit + valueStep;
+                    return new DataPoint
+                    {
+                        Name = name,
+                        TimeStamp = ts,
+                        Value = valueInit
+                    };
+                }).ToList();
     }
 }

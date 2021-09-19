@@ -10,7 +10,7 @@ namespace Volue.Infrastructure.Persistence.Configurations
         {
             builder.Ignore(e => e.DomainEvents);
 
-            builder.HasKey(t => t.TimeStamp);
+            builder.HasKey(t => new { t.Name,  t.TimeStamp });
             builder.HasIndex(t => t.Name);
             builder.Property(t => t.Name)
                 .HasMaxLength(200)

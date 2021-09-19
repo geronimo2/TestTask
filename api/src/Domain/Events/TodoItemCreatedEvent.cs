@@ -3,13 +3,13 @@ using Volue.Domain.Entities;
 
 namespace Volue.Domain.Events
 {
-    public class TodoItemCreatedEvent : DomainEvent
+    public class DataPointCreatedEvent : DomainEvent
     {
-        public TodoItemCreatedEvent(TodoItem item)
+        public DataPointCreatedEvent(DataPoint dataPoint)
         {
-            Item = item;
+            Item = dataPoint;
         }
 
-        public TodoItem Item { get; }
+        public DataPoint Item { get; }
     }
 }

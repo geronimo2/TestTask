@@ -29,6 +29,7 @@ namespace Volue.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient();
             services.AddApplication();
             services.AddInfrastructure(Configuration);
 
@@ -86,7 +87,7 @@ namespace Volue.WebUI
             app.UseStaticFiles();
             app.UseSwaggerUi3(settings =>
             {
-                settings.Path = "/api";
+                settings.Path = "/docs";
                 settings.DocumentPath = "/api/specification.json";
             });
 
