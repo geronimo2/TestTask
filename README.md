@@ -3,9 +3,11 @@
 - api
 	- navigate to api/src/WebUI
 	- dotnet run WebUI.csproj
+	- navigate browser to swagger: https://localhost:5001/docs/
 
 - calculation
 	- navigate to calculator/
+	- npm install 
 	- node ./app.js 
 
 # todo
